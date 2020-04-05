@@ -1,0 +1,25 @@
+{
+  "name": "Proctor",
+  "version": "1.0.0",
+  "description": "D&D_bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "discord",
+    "D&D",
+    "bot"
+  ],
+  "author": "Peyton Krahulik",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.1.0",
+    "discord.js": "^12.1.1",
+    "opusscript": "0.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
