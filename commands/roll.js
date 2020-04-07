@@ -1,9 +1,7 @@
 module.exports = message => {
-	var splitMess = message.content.toLowerCase().slice(6).split(' ');
-	var substring;
+	var splitMess = message.content.toLowerCase().split(' ');
 	var die = 1;
 	var numDie = 0;
-	var modifier = 0;
 	var i = 0;
 	//var sMessage = `Your rolls were:`;
 	var eMessage = ``;
@@ -12,15 +10,14 @@ module.exports = message => {
 	
 	while(splitMess[i])
 	{
-		substring = splitMess[i].split('d');
-		die = parseInt(substring[1].slice(1),10);
-		numDie = parseInt(substring[0],10);
-		if(splitMess[i+1].startsWith('+'))
+		if(splitMess[i].startsWith('d'))
 		{
-			modifier = parseInt(splitMess[i+1].slice(1),10);
-			i += 1;
+			die = parseInt(splitMess[i].slice(1),10);
 		}
-			
+		else
+		{
+			numDie = parseInt(splitMess[i],10);
+		}
 		i += 1;
 	}
 	//console.log(`Die: ${die} \nnumDie: ${numDie}`)
@@ -38,8 +35,8 @@ module.exports = message => {
 	
 	message.channel.send({embed: {
 		color: 0x00AE86,
-		title: `Total Damage: ${total + modifier}`,
-		description: (`Rolls: ${eMessage} +${modifier}`),
+		title: `Total Damage: ${total}`,
+		description: (`Rolls: ${eMessage}`),
 		timestamp: new Date(),
 		footer: {
 			icon_url: message.guild.client.user.avatarURL,
